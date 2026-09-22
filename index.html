@@ -1,1 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FieldSync | HVAC/R Team Resource</title>
 
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: #f4f6f8;
+      color: #1f2937;
+    }
+
+    header {
+      background: #111827;
+      color: white;
+      padding: 28px 20px;
+    }
+
+    .header-inner {
+      max-width: 900px;
+      margin: auto;
+    }
+
+    .brand {
+      font-size: 34px;
+      font-weight: 800;
+      margin: 0;
+    }
+
+    .tagline {
+      margin-top: 6px;
+      color: #cbd5e1;
+      font-size: 16px;
+    }
+
+    main {
+      max-width: 900px;
+      margin: auto;
+      padding: 20px;
+    }
+
+    .on-call {
+      background: #2563eb;
+      color: white;
+      border-radius: 14px;
+      padding: 20px;
+      margin-bottom: 24px;
+    }
+
+    .on-call h2 {
+      margin: 0 0 8px;
+      font-size: 18px;
+    }
+
+    .on-call-name {
+      font-size: 28px;
+      font-weight: 800;
+    }
+
+    .on-call-note {
+      margin-top: 5px;
+      font-size: 14px;
+      opacity: .85;
+    }
+
+    h2.section-title {
+      margin-top: 30px;
+      margin-bottom: 14px;
+      font-size: 22px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+    }
+
+    .card {
+      background: white;
+      border-radius: 14px;
+      padding: 22px 16px;
+      text-decoration: none;
+      color: #1f2937;
+      box-shadow: 0 2px 8px rgba(0,0,0,.08);
+      min-height: 130px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .icon {
+      font-size: 30px;
+      margin-bottom: 10px;
+    }
+
+    .card-title {
+      font-weight: 800;
+      font-size: 18px;
+      margin-bottom: 5px;
+    }
+
+    .card-text {
+      font-size: 13px;
+      line-height: 1.4;
+      color: #64748b;
+    }
+
+    .mission {
+      background: white;
+      border-radius: 14px;
+      padding: 22px;
+      margin-top: 28px;
+      box-shadow: 0 2px 8px rgba(0,0,0,.08);
+    }
+
+    .mission h2 {
+      margin-top: 0;
+    }
+
+    .mission p {
+      line-height: 1.6;
+      color: #475569;
+    }
+
+    footer {
+      text-align: center;
+      padding: 35px 20px;
+      color: #64748b;
+      font-size: 13px;
+    }
+
+    @media (max-width: 550px) {
+      .grid {
+        grid-template-columns: 1fr;
+      }
+
+      .brand {
+        font-size: 30px;
+      }
+
+      main {
+        padding: 16px;
+      }
+
+      .card {
+        min-height: 105px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="header-inner">
+    <h1 class="brand">FieldSync</h1>
+    <div class="tagline">One team. One standard. Always improving.</div>
+  </div>
+</header>
+
+<main>
+
+  <section class="on-call">
+    <h2>📞 Current On-Call Technician</h2>
+    <div class="on-call-name">Update On-Call Name</div>
+    <div class="on-call-note">Check here for the current on-call rotation.</div>
+  </section>
+
+  <h2 class="section-title">Field Resources</h2>
+
+  <div class="grid">
+
+    <a class="card" href="#">
+      <div class="icon">🚚</div>
+      <div class="card-title">Truck Stock</div>
+      <div class="card-text">
+        Standard parts, materials and tools every technician should carry.
+      </div>
+    </a>
+
+    <a class="card" href="#">
+      <div class="icon">🛠️</div>
+      <div class="card-title">Procedures</div>
+      <div class="card-text">
+        Standard field procedures and step-by-step work practices.
+      </div>
+    </a>
+
+    <a class="card" href="#">
+      <div class="icon">🔍</div>
+      <div class="card-title">Troubleshooting</div>
+      <div class="card-text">
+        Common faults, diagnostics and lessons learned in the field.
+      </div>
+    </a>
+
+    <a class="card" href="#">
+      <div class="icon">⚙️</div>
+      <div class="card-title">Parts & Materials</div>
+      <div class="card-text">
+        Part numbers, replacements, cross references and equipment information.
+      </div>
+    </a>
+
+    <a class="card" href="#">
+      <div class="icon">📋</div>
+      <div class="card-title">Scopes of Work</div>
+      <div class="card-text">
+        Standard repair scopes and examples for common HVAC/R work.
+      </div>
+    </a>
+
+    <a class="card" href="#">
+      <div class="icon">🎓</div>
+      <div class="card-title">Training</div>
+      <div class="card-text">
+        Videos, documents and field training resources for the team.
+      </div>
+    </a>
+
+  </div>
+
+  <section class="mission">
+    <h2>About FieldSync</h2>
+    <p>
+      FieldSync is a living HVAC/R field resource built to keep our team on the
+      same page. As we learn better methods, discover useful parts, solve unusual
+      problems and improve our standards, that knowledge belongs here.
+    </p>
+
+    <p>
+      The goal is simple: share what we learn, standardize what works and make
+      every technician stronger.
+    </p>
+  </section>
+
+</main>
+
+<footer>
+  FieldSync • HVAC/R Field Resource
+</footer>
+
+</body>
+</html>
