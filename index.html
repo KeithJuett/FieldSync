@@ -191,10 +191,14 @@
 </div
 
   <section class="on-call">
-    <h2>📞 Current On-Call Technician</h2>
-    <div class="on-call-name">Update On-Call Name</div>
-    <div class="on-call-note">Check here for the current on-call rotation.</div>
-  </section>
+  <h2>📞 Current On-Call Technician</h2>
+
+  <div class="on-call-name" id="onCallName">Loading...</div>
+
+  <div class="on-call-note" id="onCallDates"></div>
+
+  <div class="on-call-note" id="nextOnCall"></div>
+</section>
 
   <h2 class="section-title">Field Resources</h2>
 
@@ -229,6 +233,73 @@
 <footer>
   FieldSync • HVAC/R Field Resource
 </footer>
+<script>
+  const onCallRotation = [
+    "Mark",
+    "Keith",
+    "Alex",
+    "Dave",
+    "Robert"
+  ];
 
+  // Mark's on-call week began Monday, September 21, 2026
+  const referenceDate = Date.UTC(2026, 8, 21);
+
+  const now = new Date();
+
+  const today = Date.UTC(
+    now.getFullYear(),
+    now.getMonth(),
+    now.getDate()
+  );
+
+  const oneDay = 1000 * 60 * 60 * 24;
+  const oneWeek = oneDay * 7;
+
+  const weeksSinceReference =
+    Math.floor((today - referenceDate) / oneWeek);
+
+  const currentIndex =
+    ((weeksSinceReference % onCallRotation.length)
+    + onCallRotation.length)
+    % onCallRotation.length;
+
+  const nextIndex =
+    (currentIndex + 1) % onCallRotation.length;
+
+  const currentTech = onCallRotation[currentIndex];
+  const nextTech = onCallRotation[nextIndex];
+
+  const weekStartUTC =
+    referenceDate + (weeksSinceReference * oneWeek);
+
+  const weekEndUTC =
+    weekStartUTC + (6 * oneDay);
+
+  const nextWeekUTC =
+    weekStartUTC + (7 * oneDay);
+
+  const formatDate = (utcDate) => {
+    return new Date(utcDate).toLocaleDateString("en-US", {
+      month: "short",
+      day: "numeric",
+      timeZone: "UTC"
+    });
+  };
+
+  document.getElementById("onCallName").textContent =
+    currentTech;
+
+  document.getElementById("onCallDates").textContent =
+    formatDate(weekStartUTC) +
+    " – " +
+    formatDate(weekEndUTC);
+
+  document.getElementById("nextOnCall").textContent =
+    "Next: " +
+    nextTech +
+    " — " +
+    formatDate(nextWeekUTC);
+</script>
 </body>
 </html>
