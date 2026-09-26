@@ -242,64 +242,82 @@
     "Robert"
   ];
 
-  // Mark's on-call week began Monday, September 21, 2026
   const referenceDate = Date.UTC(2026, 8, 21);
 
-  const now = new Date();
+  function updateOnCall() {
+    const now = new Date();
 
-  const today = Date.UTC(
-    now.getFullYear(),
-    now.getMonth(),
-    now.getDate()
-  );
+    const today = Date.UTC(
+      now.getFullYear(),
+      now.getMonth(),
+      now.getDate()
+    );
 
-  const oneDay = 1000 * 60 * 60 * 24;
-  const oneWeek = oneDay * 7;
+    const oneDay = 1000 * 60 * 60 * 24;
+    const oneWeek = oneDay * 7;
 
-  const weeksSinceReference =
-    Math.floor((today - referenceDate) / oneWeek);
+    const weeksSinceReference =
+      Math.floor((today - referenceDate) / oneWeek);
 
-  const currentIndex =
-    ((weeksSinceReference % onCallRotation.length)
-    + onCallRotation.length)
-    % onCallRotation.length;
+    const currentIndex =
+      ((weeksSinceReference % onCallRotation.length)
+      + onCallRotation.length)
+      % onCallRotation.length;
 
-  const nextIndex =
-    (currentIndex + 1) % onCallRotation.length;
+    const nextIndex =
+      (currentIndex + 1) % onCallRotation.length;
 
-  const currentTech = onCallRotation[currentIndex];
-  const nextTech = onCallRotation[nextIndex];
+    const currentTech = onCallRotation[currentIndex];
+    const nextTech = onCallRotation[nextIndex];
 
-  const weekStartUTC =
-    referenceDate + (weeksSinceReference * oneWeek);
+    const weekStartUTC =
+      referenceDate + (weeksSinceReference * oneWeek);
 
-  const weekEndUTC =
-    weekStartUTC + (6 * oneDay);
+    const weekEndUTC =
+      weekStartUTC + (6 * oneDay);
 
-  const nextWeekUTC =
-    weekStartUTC + (7 * oneDay);
+    const nextWeekUTC =
+      weekStartUTC + (7 * oneDay);
 
-  const formatDate = (utcDate) => {
-    return new Date(utcDate).toLocaleDateString("en-US", {
-      month: "short",
-      day: "numeric",
-      timeZone: "UTC"
-    });
-  };
+    const formatDate = (utcDate) => {
+      return new Date(utcDate).toLocaleDateString("en-US", {
+        month: "short",
+        day: "numeric",
+        timeZone: "UTC"
+      });
+    };
 
-  document.getElementById("onCallName").textContent =
-    currentTech;
+    document.getElementById("onCallName").textContent =
+      currentTech;
 
-  document.getElementById("onCallDates").textContent =
-    formatDate(weekStartUTC) +
-    " – " +
-    formatDate(weekEndUTC);
+    document.getElementById("onCallDates").textContent =
+      formatDate(weekStartUTC) +
+      " – " +
+      formatDate(weekEndUTC);
 
-  document.getElementById("nextOnCall").textContent =
-    "Next: " +
-    nextTech +
-    " — " +
-    formatDate(nextWeekUTC);
+    document.getElementById("nextOnCall").textContent =
+      "Next: " +
+      nextTech +
+      " — " +
+      formatDate(nextWeekUTC);
+  }
+
+  // Run when the page first loads
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", updateOnCall);
+  } else {
+    updateOnCall();
+  }
+
+  // Run again when Safari restores the page
+  window.addEventListener("pageshow", updateOnCall);
+
+  // Run again whenever the tab becomes active
+  document.addEventListener("visibilitychange", function () {
+    if (!document.hidden) {
+      updateOnCall();
+    }
+  });
 </script>
 </body>
 </html>
