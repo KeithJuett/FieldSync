@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>FieldSync | HVAC/R Team Resource</title>
+  <link rel="stylesheet" href="on-call-calendar.css?v=1">
 
   <style>
     * {
@@ -188,17 +189,31 @@
        alt="Dynamic Air Solutions"
        class="dynamic-logo">
 
-</div
-
+</div>
   <section class="on-call">
-  <h2>Current On-Call Technician</h2>
+  <button class="on-call-trigger" id="calendarTrigger" type="button" aria-haspopup="dialog" aria-controls="calendarDialog">
+  <span class="on-call-label">Current On-Call Technician</span>
 
-  <div class="on-call-name" id="onCallName">Loading...</div>
+  <span class="on-call-name" id="onCallName">Loading...</span>
 
-  <div class="on-call-note" id="onCallDates"></div>
+  <span class="on-call-note" id="onCallDates"></span>
 
-  <div class="on-call-note" id="nextOnCall"></div>
+  <span class="on-call-note" id="nextOnCall"></span>
+  <span class="calendar-hint">View three-month on-call calendar</span>
+  </button>
 </section>
+
+  
+  <dialog class="calendar-dialog" id="calendarDialog" aria-labelledby="calendarTitle">
+    <div class="calendar-content">
+      <div class="calendar-top">
+        <h2 id="calendarTitle">On-Call Calendar</h2>
+        <form method="dialog"><button class="calendar-close" type="submit">Close</button></form>
+      </div>
+      <p class="calendar-note">Monday–Sunday rotation. Today is outlined in blue.</p>
+      <div id="calendarMonths"></div>
+    </div>
+  </dialog>
 
   <h2 class="section-title">Field Resources</h2>
 
@@ -335,5 +350,7 @@
     }
   });
 </script>
+<script src="on-call-calendar.js?v=1" defer></script>
+
 </body>
 </html>
