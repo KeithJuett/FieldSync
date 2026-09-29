@@ -25,27 +25,27 @@
     }
 
     .header-inner {
-    max-width: 900px;
-    margin: auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 16px;
-}
+      max-width: 900px;
+      margin: auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+      text-align: center;
+    }
 
-.header-text {
-    flex: 1;
-}
+    .header-text {
+      width: 100%;
+    }
 
-.dynamic-logo {
-    display: block;
-    width: 110px;
-    max-width: 110px;
-    height: auto;
-    margin: 0;
-    object-fit: contain;
-    flex-shrink: 0;
-}
+    .dynamic-logo {
+      display: block;
+      width: 600px;
+      max-width: 100%;
+      height: auto;
+      margin: 0 auto;
+      object-fit: contain;
+    }
 
     .brand {
       font-size: 34px;
@@ -179,17 +179,18 @@
   
 <header>
   <div class="header-inner">
+    <img src="IMG_2185.jpeg"
+         alt="Dynamic Air Solutions"
+         class="dynamic-logo">
 
-  <div class="header-text">
-    <h1 class="brand">FieldSync</h1>
-    <div class="tagline">One team. One standard. Always improving.</div>
+    <div class="header-text">
+      <h1 class="brand">FieldSync</h1>
+      <div class="tagline">One team. One standard. Always improving.</div>
+    </div>
   </div>
+</header>
 
-  <img src="IMG_2185.jpeg"
-       alt="Dynamic Air Solutions"
-       class="dynamic-logo">
-
-</div>
+<main>
   <section class="on-call">
   <button class="on-call-trigger" id="calendarTrigger" type="button" aria-haspopup="dialog" aria-controls="calendarDialog">
   <span class="on-call-label">Current On-Call Technician</span>
